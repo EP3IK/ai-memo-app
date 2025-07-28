@@ -1,36 +1,141 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AI Memo App
+
+AI-powered memo application built with Next.js, TypeScript, Tailwind CSS, Supabase, and Drizzle ORM.
+
+## Features
+
+- 🤖 AI-powered memo summarization and categorization
+- 🎤 Speech-to-text functionality
+- 🔐 Secure authentication with Supabase
+- 📱 Responsive design with Tailwind CSS
+- 🗄️ Type-safe database operations with Drizzle ORM
+- 🚀 Fast development with Next.js App Router
+
+## Tech Stack
+
+- **Frontend/Backend**: Next.js 14 with App Router
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Database**: Supabase (PostgreSQL)
+- **ORM**: Drizzle ORM
+- **AI Service**: Claude API (Anthropic)
+- **Authentication**: Supabase Auth
+- **Deployment**: Vercel
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18+
+- npm or yarn
+- Supabase account
+- Claude API key
+
+### Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/your-username/ai-memo-app.git
+cd ai-memo-app
+```
+
+2. Install dependencies:
+
+```bash
+npm install
+```
+
+3. Set up environment variables:
+
+```bash
+cp env.example .env.local
+```
+
+4. Configure your environment variables in `.env.local`:
+
+```env
+# Supabase Configuration
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+
+# Database Configuration
+DATABASE_URL=your_database_connection_string
+
+# Claude API Configuration
+ANTHROPIC_API_KEY=your_claude_api_key
+
+# Application Configuration
+NEXT_PUBLIC_APP_URL=http://localhost:3000
+NODE_ENV=development
+```
+
+5. Set up the database:
+
+```bash
+npm run db:generate
+npm run db:push
+```
+
+6. Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the application.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Available Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
+- `npm run lint:fix` - Fix ESLint errors
+- `npm run format` - Format code with Prettier
+- `npm run format:check` - Check code formatting
+- `npm run type-check` - Run TypeScript type checking
+- `npm run db:generate` - Generate database migrations
+- `npm run db:migrate` - Run database migrations
+- `npm run db:studio` - Open Drizzle Studio
+- `npm run db:push` - Push schema to database
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/
+├── app/                 # Next.js App Router pages
+├── components/          # React components
+│   ├── ui/             # Reusable UI components
+│   ├── memo/           # Memo-related components
+│   ├── auth/           # Authentication components
+│   └── layout/         # Layout components
+├── lib/                # Library configurations
+│   └── supabase.ts     # Supabase client
+├── db/                 # Database configuration
+│   ├── index.ts        # Database connection
+│   └── schema.ts       # Database schema
+├── hooks/              # Custom React hooks
+├── types/              # TypeScript type definitions
+└── utils/              # Utility functions
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Database Schema
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **users** - User accounts and profiles
+- **memos** - Memo content and metadata
+- **categories** - Memo categories
+- **tags** - Memo tags
+- **memo_tags** - Many-to-many relationship between memos and tags
 
-## Deploy on Vercel
+## Contributing
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Run tests and linting
+5. Submit a pull request
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## License
+
+This project is licensed under the MIT License.
